@@ -1,0 +1,19 @@
+[package]
+name = "neighbor"
+version = "0.1.0"
+authors = ["Jeremy Andrews <jeremy@tag1.com>"]
+edition = "2018"
+description = "A simple content management system."
+homepage = "https://github.com/jeremyandrews/neighbor"
+documentation = "https://docs.rs/neighbor/"
+repository = "https://github.com/jeremyandrewws/neighbor"
+readme = "README.md"
+keywords = ["cms", "api", "server", "http", "json"]
+license = "Apache-2.0"
+
+[dependencies]
+anyhow = "1.0"
+actix-web = { version = "3", features = ["rustls"] }
+env_logger = "0.7"
+sitter = "0"
+
