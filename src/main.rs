@@ -2,16 +2,16 @@ mod db;
 
 use std::io;
 
-use actix_web::{middleware, web, App, HttpRequest, HttpServer};
+use actix_web::{middleware, web, App, HttpRequest, HttpResponse, HttpServer};
 use sitter::person;
 
 /// POC: list all persons defined in the Sitter database.
 /// @TODO: optionally allow filtering to limit to 1 or more persons.
-async fn read_person(_req: HttpRequest) -> String {
+async fn read_person(_req: HttpRequest) -> HttpResponse {
     let db = db::connect().await.unwrap();
 
-    let persons = person::read(&db, None).await;
-    format!("persons: {:#?}", persons)
+    let persons = person::read(&db, None).await.unwrap();
+    HttpResponse::Ok().json(persons)
 }
 
 #[actix_web::main]
