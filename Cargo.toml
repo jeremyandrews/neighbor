@@ -1,6 +1,6 @@
 [package]
 name = "neighbor"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Jeremy Andrews <jeremy@tag1.com>"]
 edition = "2018"
 description = "A simple content management system."
@@ -14,6 +14,11 @@ license = "Apache-2.0"
 [dependencies]
 anyhow = "1.0"
 actix-web = { version = "3", features = ["rustls"] }
+chrono = { version = "0.4", features = ["serde"] }
+dotenv = "0.15.0"
 env_logger = "0.7"
+log = "0.4"
 sitter = "0"
-
+# temporarily here to simplify local developement
+#sitter = { path = "../sitter" }
+sqlx = { version = "0.4.0", features = [ "chrono", "decimal", "json", "postgres", "runtime-async-std-rustls", "uuid" ] }
