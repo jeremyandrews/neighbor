@@ -6,8 +6,20 @@ A simple CRM, starting as a JSON API user management system.
 
 ## Installation
 
-To create the necessary database schema, follow the installation instructions found in the Sitter library:
-https://github.com/jeremyandrews/sitter/blob/main/README.md#installation
+Neighbor uses the SQLx ORM to manage connections to a Postgres database. The CLI interface to SQLx must be used to install the schema.
+
+First, install the CLI:
+
+```sh
+cargo install --version=0.2.0 sqlx-cli --no-default-features --features postgres
+```
+
+Next, create the Neighbor database:
+```sh
+echo DATABASE_URL=postgres://USERNAME:PASSWORD@localhost/neighbor > .env
+sqlx database create
+sqlx migrate run
+```
 
 ## About
 
