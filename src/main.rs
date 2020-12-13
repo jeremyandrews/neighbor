@@ -2,10 +2,29 @@ mod db;
 
 use std::io;
 
+use log::info;
+
 use actix_web::{middleware, web, App, HttpRequest, HttpResponse, HttpServer};
 use sitter::person;
 
-/// POC: list all persons defined in the Sitter database.
+/// POC: add a new person to the Person table.
+async fn create_person(new_person: web::Json<person::NewPerson>) -> HttpResponse {
+    let db = db::connect().await.unwrap();
+
+    // @TODO: error handling
+    let new_person_id = person::create(&db, &new_person.name, &new_person.email, &new_person.pass)
+        .await
+        .unwrap();
+    info!(
+        "created new person: {:#?} with id: {}",
+        new_person, new_person_id
+    );
+
+    // Return the new person's id.
+    HttpResponse::Ok().json(new_person_id)
+}
+
+/// POC: list all persons defined in the Person table.
 /// @TODO: optionally allow filtering to limit to 1 or more persons.
 async fn read_person(_req: HttpRequest) -> HttpResponse {
     let db = db::connect().await.unwrap();
@@ -29,6 +48,7 @@ async fn main() -> io::Result<()> {
             // expose API person endpoint
             // @TODO: make endpoint paths easily configurable
             .service(web::resource("/api/person").to(read_person))
+            .service(web::resource("/api/person/create").route(web::post().to(create_person)))
     })
     .bind(listener)?
     .run()

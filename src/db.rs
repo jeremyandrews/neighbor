@@ -1,5 +1,5 @@
 /// Functions to help with managing the backend database.
-/// 
+///
 /// @TODO: explore making this database agnostic, supporting at least
 /// MySQL and SQLite in addition to Postgres.
 use sqlx::postgres::PgPool;

@@ -30,3 +30,34 @@ https://www.tag1consulting.com/blog/building-api-django-20-part-i
 
 We are currently building a self-hosted API powered by Actix and Tokio. We also intend to explore building the same self-hosted functionality using Tide and async_std.
 
+## API
+
+### Person
+
+#### Create
+
+Path: /api/person/create
+Method: POST
+Data: sitter::NewPerson
+
+POST a json-encoded sitter::NewPerson to create a new person. On success returns a json-encoded string containing the uuid of the newly created person.
+
+Example:
+```sh
+curl -X POST -H "Content-Type: application/json" -d '{"name":"Somebody","email":"somebody@example.com","pass":"f00B@r"}' http://localhost:5335/api/person/create
+"1f3bb010-6d1c-4439-a748-8ddb3ce7123d"
+```
+
+#### Read 
+
+Path: /api/person
+Method: GET
+Data: Vec<sitter::Person>
+
+Example:
+```sh
+curl http://localhost:5335/api/person
+[{"id":"1f3bb010-6d1c-4439-a748-8ddb3ce7123d","name":"Somebody","email":"somebody@example.com","pass":"f00B@r"}]
+```
+
+Make an empty GET request to receive a json-encoded list of all sitter::Person objects in the database.
