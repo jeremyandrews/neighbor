@@ -1450,7 +1450,7 @@ dependencies = [
 
 [[package]]
 name = "neighbor"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "actix-web",
  "anyhow",
@@ -1483,17 +1483,6 @@ dependencies = [
  "lexical-core",
  "memchr",
  "version_check",
-]
-
-[[package]]
-name = "num-bigint"
-version = "0.3.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5e9a41747ae4633fce5adffb4d2e81ffc5e89593cb19917f8fb2cc5ff76507bf"
-dependencies = [
- "autocfg",
- "num-integer",
- "num-traits",
 ]
 
 [[package]]
@@ -1790,16 +1779,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust_decimal"
-version = "1.8.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c9e81662973c7a8d9663e64a0de4cd642b89a21d64966e3d99606efdc5fb0cc6"
-dependencies = [
- "num-traits",
- "serde",
-]
-
-[[package]]
 name = "rustc-demangle"
 version = "0.1.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1890,7 +1869,6 @@ version = "1.0.60"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1500e84d27fe482ed1dc791a56eddc2f230046a040fa908c08bda1d9fb615779"
 dependencies = [
- "indexmap",
  "itoa",
  "ryu",
  "serde",
@@ -1961,9 +1939,9 @@ dependencies = [
 
 [[package]]
 name = "sitter"
-version = "0.1.2"
+version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7880e6550b69af1c13e51d87e710262769d6b4f49fe5e3d29bd4899a0aa74388"
+checksum = "177fba7d2f128b971307d7fdd418c3b162ab2cf851a21290297c677f13f3017f"
 dependencies = [
  "anyhow",
  "lazy_static",
@@ -2040,7 +2018,6 @@ dependencies = [
  "bitflags",
  "byteorder",
  "bytes",
- "chrono",
  "crc",
  "crossbeam-channel",
  "crossbeam-queue",
@@ -2057,15 +2034,11 @@ dependencies = [
  "lru-cache",
  "md-5",
  "memchr",
- "num-bigint",
  "once_cell",
  "parking_lot",
  "percent-encoding",
  "rand",
- "rust_decimal",
  "rustls",
- "serde",
- "serde_json",
  "sha-1",
  "sha2",
  "smallvec",
@@ -2092,7 +2065,6 @@ dependencies = [
  "heck",
  "proc-macro2",
  "quote",
- "serde_json",
  "sha2",
  "sqlx-core",
  "sqlx-rt",

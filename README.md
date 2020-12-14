@@ -36,9 +36,9 @@ We are currently building a self-hosted API powered by Actix and Tokio. We also 
 
 #### Create
 
-Path: /api/person/create
+Path: /api/person
 Method: POST
-Data: sitter::NewPerson
+Data: sitter::PersonRequest
 
 POST a json-encoded sitter::NewPerson to create a new person. On success returns a json-encoded string containing the uuid of the newly created person.
 

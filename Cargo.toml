@@ -1,6 +1,6 @@
 [package]
 name = "neighbor"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Jeremy Andrews <jeremy@tag1.com>"]
 edition = "2018"
 description = "A simple content management system."
@@ -21,4 +21,4 @@ log = "0.4"
 sitter = "0"
 # temporarily here to simplify local developement
 #sitter = { path = "../sitter" }
-sqlx = { version = "0.4.0", features = [ "chrono", "decimal", "json", "postgres", "runtime-async-std-rustls", "uuid" ] }
+sqlx = { version = "0.4.0", features = [ "postgres", "uuid" ] }
