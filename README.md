@@ -2,7 +2,7 @@
 
 Won't you be my neighbor?
 
-A simple CRM, starting as a JSON API user management system.
+A simple CMS, starting as a JSON API user management system.
 
 ## Installation
 
