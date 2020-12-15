@@ -1166,9 +1166,9 @@ dependencies = [
 
 [[package]]
 name = "http"
-version = "0.2.1"
+version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "28d569972648b2c512421b5f2a405ad6ac9666547189d0c5477a3f200f3e02f9"
+checksum = "84129d298a6d57d246960ff8eb831ca4af3f96d29e2e28848dae275408658e26"
 dependencies = [
  "bytes",
  "fnv",
@@ -1203,9 +1203,9 @@ dependencies = [
 
 [[package]]
 name = "indexmap"
-version = "1.6.0"
+version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "55e2e4c765aa53a0424761bf9f41aa7a6ac1efa87238f59560640e27fca028f2"
+checksum = "4fb1fa934250de4de8aef298d81c729a7d33d8c239daa3a7575e6b92bfc7313b"
 dependencies = [
  "autocfg",
  "hashbrown",
@@ -1450,7 +1450,7 @@ dependencies = [
 
 [[package]]
 name = "neighbor"
-version = "0.1.2"
+version = "0.1.3"
 dependencies = [
  "actix-web",
  "anyhow",
@@ -1460,6 +1460,7 @@ dependencies = [
  "log",
  "sitter",
  "sqlx",
+ "uuid",
 ]
 
 [[package]]
@@ -1939,16 +1940,15 @@ dependencies = [
 
 [[package]]
 name = "sitter"
-version = "0.1.4"
+version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "177fba7d2f128b971307d7fdd418c3b162ab2cf851a21290297c677f13f3017f"
+checksum = "511d2dac0c7fa3b2820f76821f43b28421d579562bece40cc4a1cda658bd72df"
 dependencies = [
  "anyhow",
  "lazy_static",
  "log",
  "regex",
  "serde",
- "serde_json",
  "sqlx",
  "uuid",
 ]

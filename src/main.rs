@@ -1,3 +1,6 @@
+/// Won't you be my neighbor?
+///
+/// A simple CRM, starting as a JSON API user management system.
 mod sitter;
 
 use std::env;
@@ -32,10 +35,7 @@ async fn main() -> Result<()> {
 
     info!("Neighbor listening at: {:?}", listener);
 
-    server
-        .bind(listener)?
-        .run()
-        .await?;
+    server.bind(listener)?.run().await?;
 
     Ok(())
 }
