@@ -22,6 +22,8 @@ async fn main() -> Result<()> {
         App::new()
             // enable logger
             .wrap(middleware::Logger::default())
+            // enable page served by header
+            .wrap(middleware::DefaultHeaders::new().header("X-Neighbor", "0"))
             // pass database pool to application so we can access it inside handlers
             .data(db_pool.clone())
             // @TODO: make endpoint paths easily configurable
