@@ -34,7 +34,7 @@ async fn read(uuid: web::Path<Uuid>, db_pool: web::Data<PgPool>) -> impl Respond
     let result = Person::read(Some(uuid.into_inner()), db_pool.get_ref()).await;
     match result {
         Ok(person) => HttpResponse::Ok().json(person),
-        _ => HttpResponse::BadRequest().body("Error trying to read persons from database"),
+        _ => HttpResponse::BadRequest().body("Error trying to read person from database"),
     }
 }
 
@@ -44,7 +44,9 @@ async fn create(person: web::Json<PersonRequest>, db_pool: web::Data<PgPool>) ->
     let result = Person::create(person.into_inner(), db_pool.get_ref()).await;
     match result {
         Ok(person) => HttpResponse::Ok().json(person),
-        _ => HttpResponse::BadRequest().body("Error trying to create new person"),
+        Err(e) => {
+            HttpResponse::BadRequest().body(format!("Error trying to create new person: {}", e))
+        }
     }
 }
 
@@ -58,7 +60,7 @@ async fn update(
     let result = Person::update(uuid.into_inner(), person.into_inner(), db_pool.get_ref()).await;
     match result {
         Ok(person) => HttpResponse::Ok().json(person),
-        _ => HttpResponse::BadRequest().body("Person not found"),
+        Err(e) => HttpResponse::BadRequest().body(format!("Error updating Person: {}", e)),
     }
 }
 
@@ -74,6 +76,6 @@ async fn delete(uuid: web::Path<Uuid>, db_pool: web::Data<PgPool>) -> impl Respo
                 HttpResponse::BadRequest().body("Person not found")
             }
         }
-        _ => HttpResponse::BadRequest().body("Person not found"),
+        Err(e) => HttpResponse::BadRequest().body(format!("Error deleting Person: {}", e)),
     }
 }
