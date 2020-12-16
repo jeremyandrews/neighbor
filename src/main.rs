@@ -27,8 +27,10 @@ async fn main() -> Result<()> {
             .wrap(middleware::Logger::default())
             // enable page served by header
             .wrap(middleware::DefaultHeaders::new().header("X-Neighbor", "0"))
-            // pass database pool to application so we can access it inside handlers
+            // pass database pool to application
             .data(db_pool.clone())
+            // pass registered hooks to application
+            .data(sitter::register_hooks())
             // @TODO: make endpoint paths easily configurable
             .configure(sitter::routes)
     });

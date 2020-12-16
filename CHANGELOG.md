@@ -1,8 +1,9 @@
 # Changelog
 
-## 0.1.4-dev
+## 0.1.4 Dec 16, 2020
  - pass through actual errors
  - update documentation to reflect password hashing
+ - register hooks during startup and pass to Sitter as needed
 
 ## 0.1.3 Dec 15, 2020
  - introduce `example.env`

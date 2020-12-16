@@ -25,12 +25,19 @@ sqlx database create
 sqlx migrate run
 ```
 
+To start over with a clean database, you can drop the old one and recreate:
+```sh
+sqlx database drop
+sqlx database create
+sqlx migrate run
+```
+
 ## Usage
 
 Use Cargo to run Neighbor, for example:
 
 ```sh
-cargo run
+cargo run --release
 ```
 
 ## About
@@ -40,7 +47,7 @@ Neighbor is still in very early development. It is inspired by the CMS functiona
 The initial goal is to provide the functionality documented in this two-part series where we used Django, resulting in a Rust-powered JSON backend for a single page application:
 https://www.tag1consulting.com/blog/building-api-django-20-part-i
 
-We are currently building a self-hosted API powered by Actix and Tokio. We also intend to explore building the same self-hosted functionality using Tide and async_std.
+Neighbor is currently a self-hosted API powered by Actix and Tokio with a PostgreSQL data store. The eventual goal is to support other frameworks (such as Tide and async_std) and other data stores (such as MySQL).
 
 ## API
 
