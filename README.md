@@ -64,10 +64,10 @@ POST a json-encoded sitter::person::PersonRequest to create a new Person. On suc
 
 ##### Example:
 ```sh
-curl -X POST -H "Content-Type: application/json" -d '{"name":"Some Body","email":"somebody@example.com","pass":"Po(iUhJihU3$xS"}' http://localhost:5335/api/person
-{"id":"5d62b617-67b6-4a3d-a2f1-f392f0ed64fd","name":"Some Body","email":"somebody@example.com","pass":"$argon2id$v=19$m=32768,t=1,p=4$KPjETcw8yJXhhTXqkKzj683/WYv5Av80$iBq4KS27a+C0SafTx2eSZQ"}
-curl -X POST -H "Content-Type: application/json" -d '{"name":"Somebody Else","email":"somebodyelse@example.com","pass":"123456abcdef"}' http://localhost:5335/api/person
-{"id":"1d66f0f4-88e8-4454-bd7e-445624bfd994","name":"Somebody Else","email":"somebodyelse@example.com","pass":"$argon2id$v=19$m=32768,t=1,p=4$KoH+adS/iJWO/mK7XzKHWZ4YaJOJCfnP$+vPFthc+/wnKHIJ2dktkWw"}
+curl -X POST -H "Content-Type: application/json" -d '{"email":"somebody@example.com","pass":"Po(iUhJihU3$xS"}' http://localhost:5335/api/person
+{"id":"80875435-1d6b-46fc-9515-255395f1925a","email":"somebody@example.com","pass":"$argon2id$v=19$m=262144,t=8,p=4$TcBXCrCUjnfIAcM2UNdtgzmy0ZiI2aYr$/GbooiDO/V3tIkYkmKrEeekGFv8CQXbyntF3wLeD0mI"}
+curl -X POST -H "Content-Type: application/json" -d '{"email":"somebodyelse@example.com","pass":"123456abcdef"}' http://localhost:5335/api/person
+{"id":"4899aecd-604a-4c7e-b265-1eeb4113d3bc","email":"somebodyelse@example.com","pass":"$argon2id$v=19$m=262144,t=8,p=4$V8tEvwgrhA2CHsfgxAbopZHPnX5eKqAx$UV3Bz5lQr0G0YMSdk0iH894cJqVEq+74mMVbzkTjiE8"}
 ```
 
 ### Update
@@ -81,8 +81,8 @@ PUT a json-encoded sitter::person::PersonRequest to update an existing Person, c
 
 ##### Example:
 ```sh
-curl -X PUT -H "Content-Type: application/json" -d '{"name":"Somebody","email":"somebody@example.com","pass":""}' http://localhost:5335/api/person/5d62b617-67b6-4a3d-a2f1-f392f0ed64fd
-{"id":"5d62b617-67b6-4a3d-a2f1-f392f0ed64fd","name":"Somebody","email":"somebody@example.com","pass":"$argon2id$v=19$m=32768,t=1,p=4$KPjETcw8yJXhhTXqkKzj683/WYv5Av80$iBq4KS27a+C0SafTx2eSZQ"}
+curl -X PUT -H "Content-Type: application/json" -d '{"email":"somebodyFOO@example.com","pass":""}' http://localhost:5335/api/person/80875435-1d6b-46fc-9515-255395f1925a
+{"id":"80875435-1d6b-46fc-9515-255395f1925a","email":"somebodyFOO@example.com","pass":"$argon2id$v=19$m=262144,t=8,p=4$TcBXCrCUjnfIAcM2UNdtgzmy0ZiI2aYr$/GbooiDO/V3tIkYkmKrEeekGFv8CQXbyntF3wLeD0mI"}
 ```
 
 Note: @TODO The intent is that when an empty "pass" is set no change is made to the password, and when "pass" is not empty it can be used to change the password. Currently "pass" is completely ignored.
@@ -101,7 +101,7 @@ Make an empty GET request to receive a json-encoded list of all sitter::Person o
 ##### Example:
 ```sh
 curl http://localhost:5335/api/person
-[{"id":"1d66f0f4-88e8-4454-bd7e-445624bfd994","name":"Somebody Else","email":"somebodyelse@example.com","pass":"$argon2id$v=19$m=32768,t=1,p=4$KoH+adS/iJWO/mK7XzKHWZ4YaJOJCfnP$+vPFthc+/wnKHIJ2dktkWw"},{"id":"5d62b617-67b6-4a3d-a2f1-f392f0ed64fd","name":"Somebody","email":"somebody@example.com","pass":"$argon2id$v=19$m=32768,t=1,p=4$KPjETcw8yJXhhTXqkKzj683/WYv5Av80$iBq4KS27a+C0SafTx2eSZQ"}]
+[{"id":"4899aecd-604a-4c7e-b265-1eeb4113d3bc","email":"somebodyelse@example.com","pass":"$argon2id$v=19$m=262144,t=8,p=4$V8tEvwgrhA2CHsfgxAbopZHPnX5eKqAx$UV3Bz5lQr0G0YMSdk0iH894cJqVEq+74mMVbzkTjiE8"},{"id":"80875435-1d6b-46fc-9515-255395f1925a","email":"somebodyFOO@example.com","pass":"$argon2id$v=19$m=262144,t=8,p=4$TcBXCrCUjnfIAcM2UNdtgzmy0ZiI2aYr$/GbooiDO/V3tIkYkmKrEeekGFv8CQXbyntF3wLeD0mI"}]
 ```
 
 ### Read
@@ -115,6 +115,6 @@ Make an empty GET request including a specific Uuid to receive a json-encoded li
 
 ##### Example:
 ```sh
-curl http://localhost:5335/api/person/5d62b617-67b6-4a3d-a2f1-f392f0ed64fd
-[{"id":"5d62b617-67b6-4a3d-a2f1-f392f0ed64fd","name":"Somebody","email":"somebody@example.com","pass":"$argon2id$v=19$m=32768,t=1,p=4$KPjETcw8yJXhhTXqkKzj683/WYv5Av80$iBq4KS27a+C0SafTx2eSZQ"}]
+curl http://localhost:5335/api/person/80875435-1d6b-46fc-9515-255395f1925a
+[{"id":"80875435-1d6b-46fc-9515-255395f1925a","email":"somebodyFOO@example.com","pass":"$argon2id$v=19$m=262144,t=8,p=4$TcBXCrCUjnfIAcM2UNdtgzmy0ZiI2aYr$/GbooiDO/V3tIkYkmKrEeekGFv8CQXbyntF3wLeD0mI"}]
 ```

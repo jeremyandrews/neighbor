@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.5-dev
+ - remove `name` as required Person field
+
 ## 0.1.4 Dec 16, 2020
  - pass through actual errors
  - update documentation to reflect password hashing
